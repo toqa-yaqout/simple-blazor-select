@@ -4,14 +4,23 @@
 
 <div class="row">
     <div class="col-md-6">
-        <SingleSelect TModel="Student"
+        <SingleSelect TEntity="Student"
+                      @bind-Value="selectedStudent"
                       DefaultSelectLabel="Select ..."
                       Datasource="@students" />
     </div>
+    <div class="col-md-6">
+        @if (selectedStudent != null)
+        {
+            <p>You select student of id @selectedStudent.Id and name @selectedStudent.Name</p>
+        }
+    </div>
 </div>
+
 
 @code {
     List<Student> students = new();
+    Student selectedStudent = null;
 
     protected override void OnInitialized()
     {

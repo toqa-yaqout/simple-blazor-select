@@ -1,5 +1,5 @@
 ﻿@namespace Components.Select
-@typeparam  TModel
+@typeparam TEntity
 
 <div class="select-wrapper" @onclick="OnClickSelect">
     <div class="select @(isOpen ? "open" : "")">
@@ -8,9 +8,9 @@
             <div class="arrow"></div>
         </div>
         <div class="custom-options">
-            @foreach (TModel item in Datasource)
+            @foreach (TEntity item in Datasource)
             {
-                <span class="custom-option selected" data-value="@item.Id">@item.Name</span>
+                <span class="custom-option selected" data-value="@item.Id" @onclick="@((args) => OnSelectItem(item))">@item.Name</span>
             }
         </div>
     </div>
