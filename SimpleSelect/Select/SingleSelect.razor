@@ -1,3 +1,17 @@
-﻿<div class="my-component">
-    This component is defined in the <strong>Select</strong> library.
+﻿@namespace Components.Select
+@typeparam  TModel
+
+<div class="select-wrapper" @onclick="OnClickSelect">
+    <div class="select @(isOpen ? "open" : "")">
+        <div class="select__trigger">
+            <span>@DefaultSelectLabel</span>
+            <div class="arrow"></div>
+        </div>
+        <div class="custom-options">
+            @foreach (TModel item in Datasource)
+            {
+                <span class="custom-option selected" data-value="@item.Id">@item.Name</span>
+            }
+        </div>
+    </div>
 </div>

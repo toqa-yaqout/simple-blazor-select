@@ -4,6 +4,25 @@
 
 <div class="row">
     <div class="col-md-6">
-        <SingleSelect />
+        <SingleSelect TModel="Student"
+                      DefaultSelectLabel="Select ..."
+                      Datasource="@students" />
     </div>
 </div>
+
+@code {
+    List<Student> students = new();
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        students = new List<Student>{
+           new Student{ Id= 1, Name="Sara" },
+           new Student{ Id= 2, Name="Sally" },
+           new Student{ Id= 3, Name="Bob" },
+           new Student{ Id= 4, Name="John" },
+           new Student{ Id= 5, Name="Smith" },
+           new Student{ Id= 6, Name="Mark" }
+        };
+    }
+}
